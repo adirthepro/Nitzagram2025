@@ -8,9 +8,21 @@ class Post:
     """
     A class used to represent post on Nitzagram
     """
-    def __init__(self): #TODO: add parameters
-        #TODO: write me!
-        pass
+
+    def __init__(self, username, location, description, likes_counter, comments):
+        self.username = username
+        self.location = location
+        self.description = description
+        self.likes_counter = likes_counter
+        self.comments = comments
+        self.comments_display_index = 0
+
+    def add_like(self):
+        self.likes_counter+=1
+
+    def add_comment(self,text):
+        if isinstance(self.comments,list):
+            self.comments.append(text)
 
     def display(self):
         """
@@ -19,8 +31,24 @@ class Post:
 
         :return: None
         """
+        #username
+        font=(pygame.font.SysFont('chalkduster.ttf',UI_FONT_SIZE))
+        text_username = font.render(self.username,True,BLACK)
+        screen.blit(text_username,[USER_NAME_X_POS,USER_NAME_Y_POS])
+        #location
+        text_location=font.render(self.location,True,BLACK)
+        screen.blit(text_location,[LOCATION_TEXT_X_POS,LOCATION_TEXT_Y_POS])
+        #likes
+        text_likes=font.render(self.likes_counter,True,BLACK)
+        screen.blit(text_likes,[LIKE_TEXT_X_POS,LOCATION_TEXT_Y_POS])
+        #description
+        text_description=font.render(self.description,True,BLACK)
+        screen.blit(text_description,[DESCRIPTION_TEXT_X_POS,DESCRIPTION_TEXT_Y_POS])
+        #comments
+        self.display_comments()
+
         # TODO: write me!
-        pass
+
 
 
     def display_comments(self):
