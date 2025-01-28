@@ -32,7 +32,7 @@ class Post:
         :return: None
         """
         #username
-        font=(pygame.font.SysFont('chalkduster.ttf',UI_FONT_SIZE))
+        font=pygame.font.SysFont('chalkduster.ttf',UI_FONT_SIZE)
         text_username = font.render(self.username,True,BLACK)
         screen.blit(text_username,[USER_NAME_X_POS,USER_NAME_Y_POS])
         #location
@@ -50,7 +50,22 @@ class Post:
         # TODO: write me!
 
 
-
+    def display_username(self):
+        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
+        text_username = font.render(self.username, True, BLACK)
+        screen.blit(text_username, [USER_NAME_X_POS, USER_NAME_Y_POS])
+    def display_location(self):
+        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
+        text_location = font.render(self.location, True, BLACK)
+        screen.blit(text_location, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
+    def display_likes(self):
+        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
+        text_likes = font.render(self.likes_counter, True, BLACK)
+        screen.blit(text_likes, [LIKE_TEXT_X_POS, LOCATION_TEXT_Y_POS])
+    def display_description(self):
+        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
+        text_description = font.render(self.description, True, BLACK)
+        screen.blit(text_description, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
     def display_comments(self):
         """
         Display comments on post. In case there are more than 4
