@@ -60,8 +60,8 @@ class Post:
         screen.blit(text_location, [LOCATION_TEXT_X_POS, LOCATION_TEXT_Y_POS])
     def display_likes(self):
         font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
-        text_likes = font.render(self.likes_counter, True, BLACK)
-        screen.blit(text_likes, [LIKE_TEXT_X_POS, LOCATION_TEXT_Y_POS])
+        text_likes = font.render(f"this post has {self.likes_counter} likes", True, BLACK)
+        screen.blit(text_likes, [LIKE_TEXT_X_POS, LIKE_TEXT_Y_POS])
     def display_description(self):
         font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
         text_description = font.render(self.description, True, BLACK)

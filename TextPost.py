@@ -1,4 +1,4 @@
-from classes import Post
+from classes.Post import *
 import pygame
 from constants import *
 from helpers import screen
@@ -11,8 +11,12 @@ class TextPost(Post):
         self.background_color=background_color
 
     def display(self):
-        screen.fill(self.background_color)
-        screen.blit(self.text,(0.5*POST_X_POS,0.5*POST_Y_POS))
+        square= pygame.Rect(POST_X_POS,POST_Y_POS,POST_WIDTH,POST_HEIGHT)
+        pygame.draw.rect(screen,self.background_color,square)
+        left_space = (POST_WIDTH - self.text.get_width()) / 2
+        up_space=(POST_HEIGHT-self.text.get_height())/2
+
+        screen.blit(self.text,(POST_X_POS + left_space,POST_Y_POS+up_space))
         super().display_username()
         super().display_location()
         super().display_likes()
