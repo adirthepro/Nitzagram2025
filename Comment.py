@@ -1,4 +1,4 @@
-from classes import Post
+from classes.Post import *
 import pygame
 from constants import *
 from helpers import *
@@ -9,7 +9,6 @@ class Comment:
         self.text=font.render(text,True,BLACK)
 
     def display_comment(self):
-
-        self.display_comment()
+        pass
 
 

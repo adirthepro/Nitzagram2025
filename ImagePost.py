@@ -16,5 +16,6 @@ class ImagePost(Post):
         super().display_likes()
         super().display_description()
         super().display_comments()
+
         screen.blit(self.img,(POST_X_POS,POST_Y_POS))
 

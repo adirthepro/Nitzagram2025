@@ -5,7 +5,7 @@ from buttons import *
 from ImagePost import ImagePost
 from TextPost import TextPost
 from Images import *
-
+from Comment import *
 def main():
     # Set up the game display, clock and headline
     pygame.init()
@@ -22,7 +22,7 @@ def main():
 
     # TODO: add a post here
     img1 = ImagePost("username","Israel","Noa Kirel in Israel", 0, [],"Images/noa_kirel.jpg")
-    txt1=TextPost("username","Israel","text",0,[],"Project",(0,0,255),(0,255,255))
+    txt1=TextPost("username","Israel","text",0,[],"Project",(255, 5, 5),(5, 91, 250))
     img2=ImagePost("username","Israel","Ronaldo is the goat",0,[],"Images/ronaldo.jpg")
     list_of_posts=[img1,txt1,img2]
     i=0
@@ -37,12 +37,15 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_in_button(like_button,event.pos):
                     list_of_posts[i].add_like()
-                else:
-                    if i==2:
+                elif mouse_in_button(click_post_button,event.pos):
+                    if i==len(list_of_posts)-1:
                         i=0
                     else:
                         i+=1
-
+                elif mouse_in_button(comment_button,event.pos):
+                    comment = read_comment_from_user()
+                    cmt=Comment(comment)
+                    list_of_posts[i].add_comment(cmt)
 
 
         # Display the background, presented Image, likes, comments, tags and location(on the Image)
