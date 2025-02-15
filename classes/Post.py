@@ -45,6 +45,7 @@ class Post:
         text_description=font.render(self.description,True,BLACK)
         screen.blit(text_description,[DESCRIPTION_TEXT_X_POS,DESCRIPTION_TEXT_Y_POS])
         #comments
+        self.display_comment()
         self.display_comments()
 
         # TODO: write me!
@@ -66,6 +67,10 @@ class Post:
         font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
         text_description = font.render(self.description, True, BLACK)
         screen.blit(text_description, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
+    def display_comment(self):
+        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
+        text_comment = font.render(self.comments[self.comments_display_index], True, BLACK)
+        screen.blit(text_comment, [FIRST_COMMENT_X_POS,FIRST_COMMENT_Y_POS])
     def display_comments(self):
         """
         Display comments on post. In case there are more than 4
