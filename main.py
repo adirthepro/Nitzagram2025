@@ -22,7 +22,7 @@ def main():
 
     # TODO: add a post here
     img1 = ImagePost("username","Israel","Noa Kirel in Israel", 0, [],"Images/noa_kirel.jpg")
-    txt1=TextPost("username","Israel","text",0,[],"Project",(255, 5, 5),(5, 91, 250))
+    txt1=TextPost("username","Israel","The weather now is raining",0,[],"Happy winter",(255, 5, 5),(5, 91, 250))
     img2=ImagePost("username","Israel","Ronaldo is the goat",0,[],"Images/ronaldo.jpg")
     list_of_posts=[img1,txt1,img2]
     i=0
@@ -43,9 +43,12 @@ def main():
                     else:
                         i+=1
                 elif mouse_in_button(comment_button,event.pos):
-                    comment = read_comment_from_user()
-                    cmt=Comment(comment)
+                    cmt=Comment()
                     list_of_posts[i].add_comment(cmt)
+                    cmt.display_comment()
+
+
+
 
 
         # Display the background, presented Image, likes, comments, tags and location(on the Image)
