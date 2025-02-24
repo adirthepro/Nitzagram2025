@@ -9,12 +9,12 @@ class Post:
     A class used to represent post on Nitzagram
     """
 
-    def __init__(self, username, location, description, likes_counter, comments):
+    def __init__(self, username, location, description, likes_counter):
         self.username = username
         self.location = location
         self.description = description
         self.likes_counter = likes_counter
-        self.comments = comments
+        self.comments = []
         self.comments_display_index = 0
 
     def add_like(self):
@@ -45,7 +45,6 @@ class Post:
         text_description=font.render(self.description,True,BLACK)
         screen.blit(text_description,[DESCRIPTION_TEXT_X_POS,DESCRIPTION_TEXT_Y_POS])
         #comments
-        self.display_comment()
         self.display_comments()
 
         # TODO: write me!
@@ -67,10 +66,7 @@ class Post:
         font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
         text_description = font.render(self.description, True, BLACK)
         screen.blit(text_description, [DESCRIPTION_TEXT_X_POS, DESCRIPTION_TEXT_Y_POS])
-    def display_comment(self):
-        font = (pygame.font.SysFont('chalkduster.ttf', UI_FONT_SIZE))
-        text_comment = font.render(self.comments[self.comments_display_index], True, BLACK)
-        screen.blit(text_comment, [FIRST_COMMENT_X_POS,FIRST_COMMENT_Y_POS])
+
     def display_comments(self):
         """
         Display comments on post. In case there are more than 4
@@ -91,7 +87,8 @@ class Post:
         # Display 4 comments starting from comments_display_index
         for i in range(0, len(self.comments)):
             if position_index >= len(self.comments):
-                position_index = 0
+                #position_index = 0
+                break
             self.comments[position_index].display(i)
             position_index += 1
             if i >= NUM_OF_COMMENTS_TO_DISPLAY - 1:

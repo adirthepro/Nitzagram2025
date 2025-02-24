@@ -21,9 +21,9 @@ def main():
                                         (WINDOW_WIDTH, WINDOW_HEIGHT))
 
     # TODO: add a post here
-    img1 = ImagePost("username","Israel","Noa Kirel in Israel", 0, [],"Images/noa_kirel.jpg")
-    txt1=TextPost("username","Israel","The weather now is raining",0,[],"Happy winter",(255, 5, 5),(5, 91, 250))
-    img2=ImagePost("username","Israel","Ronaldo is the goat",0,[],"Images/ronaldo.jpg")
+    img1 = ImagePost("username","Israel","Noa Kirel in Israel", 0, "Images/noa_kirel.jpg")
+    txt1=TextPost("username","Israel","The weather now is raining",0,"Happy winter",(255, 5, 5),(5, 91, 250))
+    img2=ImagePost("username","Israel","Ronaldo is the goat",0,"Images/ronaldo.jpg")
     list_of_posts=[img1,txt1,img2]
     i=0
     running = True
@@ -45,7 +45,13 @@ def main():
                 elif mouse_in_button(comment_button,event.pos):
                     cmt=Comment()
                     list_of_posts[i].add_comment(cmt)
-                    cmt.display_comment()
+                    #cmt.display()
+                elif mouse_in_button(view_more_comments_button,event.pos):
+                    if len(list_of_posts[i].comments)>list_of_posts[i].comments_display_index+4:
+                        list_of_posts[i].comments_display_index+=4
+                    else:
+                        list_of_posts[i].comments_display_index = 0
+
 
 
 
